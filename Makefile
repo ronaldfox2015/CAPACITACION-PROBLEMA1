@@ -5,7 +5,7 @@ install:
 	docker run -it -v "$(PWD):/app" -w "/app"  $(TAG_DEV) npm install
 
 start:
-	docker run -it -p 3030:3030 -p 35729:35729 -v "$(PWD):/app" -w "/app"  $(TAG_DEV) npm start
+	docker run -it -p 1042:3030 -p 35729:35729 -v "$(PWD):/app" -w "/app"  $(TAG_DEV) npm start
 
 login: ## login de docker: make login
 	@docker login
