@@ -1,15 +1,15 @@
 version: '3'
 services:
   nginx:
-    image: ronaldgcr/orbis-training-docker:0.3.0
-    ports: 
-      - 1042:80
+    image: ronaldgcr/orbis-training-docker:0.4.0
+    build: /app
+    ports:
+      - 1042:3030
+
     volumes:
       - ./:/app
-    command: "npm start"
 
-
-#  mysql:
+    command: npm start
 #    image: mysql:5.5
 #    ports:
 #      - 3309:3306
