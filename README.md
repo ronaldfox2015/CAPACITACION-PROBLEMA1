@@ -38,3 +38,26 @@ Integrantes:
 
 - host http://localhost:1042/#1 
 - npm run release npm help scripts
+
+
+## PREGUNTAS:
+### ¿Qué significa el comando -d?
+    
+¿Porqué la sentencia comienza con @?
+¿Para qué sirve el comando mkdir?
+Explicar lo que hace la función mkdir_deploy_dir
+
+
+PREGUNTAS:
+¿Para qué sirve el uso de \?
+¿Para qué sirve el uso de &&?
+¿Qué función cumple usar los argumentos -rf?
+Explicar lo que hace la función git_init (linea por linea)
+
+
+PREGUNTAS:
+¿Para qué sirve el uso de eval?
+¿Para qué sirve el uso de shell?
+¿Para qué sirve el uso de git log --pretty=format:"%an"?
+¿Cuál es la diferencia en usar git config y git config --global?
+Explicar lo que hace la función git_config (línea por línea)

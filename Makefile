@@ -1,9 +1,12 @@
-.DEFAULT_GOAL := help
+	.DEFAULT_GOAL := help
 
 BUILD_TIMESTAMP ?= `date +%Y%m%d`
 VERSION			:= 0.4.0
-PROYECT         := ronaldgcr
-TAG_DEV			:= $(PROYECT)/orbis-training-docker:$(VERSION)
+USER         := ronaldgcr
+TAG_DEV			:= $(USER)/orbis-training-docker:$(VERSION)
+
+include makefiles/deploy-ghpages.mk
+include makefiles/task.mk
 
 install:
 	docker run -d -v "$(PWD):/app" -w "/app"  $(TAG_DEV) npm install
@@ -30,21 +33,19 @@ greet:
 readme:
 	@echo "Hola recursos!"
 
-login: ## login de docker: make login
-	@docker login
-
-build: ## construccion de la imagen: make build
-	docker build -f docker/node/Dockerfile -t $(TAG_DEV) docker/node/;
 
 all-images: ## Lista todas las imagenes: make all-images
 	docker image
 	
-push: ## Subir imagen al dockerhub: make push
-	@make login
-	@docker push $(TAG_DEV)
 
 list-dirs: ## Listar archivos/carpetas dentro del contenedor
 	docker run $(TAG_DEV) ls $(dirs)
+
+build-jenkins:
+	docker build -t $(USER)/jenkins-deploy:0.1.0 docker/jenkins
+
+start-jenkis:
+	docker run --rm  -u root -p 8080:8080 -v $(PWD)/jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock $(USER)/jenkins-deploy:0.1.0
 
 help: ## ayuda: make help
 	@printf "\033[31m%-16s %-59s %s\033[0m\n" "Target" "Help" "Usage"; \
