@@ -1,4 +1,4 @@
-	.DEFAULT_GOAL := help
+.DEFAULT_GOAL := help
 
 BUILD_TIMESTAMP ?= `date +%Y%m%d`
 VERSION			:= 0.4.0
@@ -36,7 +36,8 @@ readme:
 
 all-images: ## Lista todas las imagenes: make all-images
 	docker image
-	
+
+		
 
 list-dirs: ## Listar archivos/carpetas dentro del contenedor
 	docker run $(TAG_DEV) ls $(dirs)
