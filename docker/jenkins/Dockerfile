@@ -8,6 +8,9 @@ RUN cat /etc/issue
 
 RUN apk add --update py-pip
 
+RUN pip install awscli 
+
+
 RUN pip install awscli --upgrade --user
 
 ENV APP_DIR=/app
